@@ -14,6 +14,8 @@ build:
   number: 0
   skip: true  # [py<30]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation  --ignore-installed --no-cache-dir -vvv
+  entry_points:
+    - pygrun=antlr4._pygrun:main
 
 requirements:
   host:
