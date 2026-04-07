@@ -1,18 +1,16 @@
 {% set name = "antlr4-python3-runtime" %}
-{% set version = "4.11.1" %}
-
+{% set version = "4.13.2" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/antlr4-python3-runtime-{{ version }}.tar.gz
-  sha256: a53de701312f9bdacc5258a6872cd6c62b90d3a90ae25e494026f76267333b60
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
+  sha256: 909b647e1d2fc2b70180ac586df3933e38919c85f98ccc656a96cd3f25ef3916
 
 build:
   number: 0
-  skip: true  # [py<30]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation  --ignore-installed --no-cache-dir -vvv
   entry_points:
     - pygrun=antlr4._pygrun:main
@@ -21,7 +19,7 @@ requirements:
   host:
     - pip
     - python
-    - setuptools
+    - setuptools >=61.2,<82
     - wheel 
   run:
     - python
