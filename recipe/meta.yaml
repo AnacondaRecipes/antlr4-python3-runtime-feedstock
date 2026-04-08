@@ -10,7 +10,7 @@ source:
   sha256: 909b647e1d2fc2b70180ac586df3933e38919c85f98ccc656a96cd3f25ef3916
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation  --ignore-installed --no-cache-dir -vvv
   entry_points:
     - pygrun=antlr4._pygrun:main
@@ -24,6 +24,8 @@ requirements:
   run:
     - python
     - typing  # [py<35]
+  run_constrained:
+    - setuptools <82
 
 test:
   imports:
